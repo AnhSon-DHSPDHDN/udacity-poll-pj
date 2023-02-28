@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RootRoutes from "./constants/routes";
+import HomeLayout from "./layouts/HomeLayout";
+import HomePage from "./pages/HomePage";
+import LeaderBoardPage from "./pages/LeaderBoardPage";
+import NewPollPage from "./pages/NewPollPage";
+import DetailPollPage from "./pages/DetailPollPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={RootRoutes.LOGIN_PAGE} element={<LoginPage />} />
+        <Route path={RootRoutes.HOME_PAGE} element={<HomeLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path={RootRoutes.LEADER_BOARD} element={<LeaderBoardPage />} />
+          <Route path={RootRoutes.ADD_POLL} element={<NewPollPage />} />
+          <Route path={RootRoutes.DETAIL_POLL} element={<DetailPollPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

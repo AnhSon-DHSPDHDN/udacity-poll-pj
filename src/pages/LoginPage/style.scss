@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-wrapper {
+    width: 450px;
+    margin-top: 40px;
+    padding: 0 20px 20px 20px;
+    border: 1px solid $color-black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px $color-black;
+  }
+
+  .login-form {
+    &__title {
+      text-align: center;
+    }
+
+    &__container {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    &__btn-submit {
+      padding: 7px 20px;
+      cursor: pointer;
+    }
+
+    &__input {
+      padding: 8px 10px;
+    }
+  }
+}

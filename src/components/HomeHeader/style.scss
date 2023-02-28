@@ -1,0 +1,74 @@
+@import '../../styles/variables';
+
+%afterLink {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 3px;
+  background-color: $color-black;
+  bottom: 0;
+  left: 0;
+  transition: width .3s;
+}
+
+.home-header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 1px solid $color-gray;
+  width: 100%;
+  box-shadow: 0px 0px 2px $color-black;
+  background-color: $color-white;
+  z-index: 99;
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  &__right-container {
+    display: flex;
+    padding-right: 50px;
+    align-items: center;
+    column-gap: 30px;
+  }
+
+  &__info-user {
+    display: flex;
+    align-items: center;
+  }
+
+  .tab-wrapper {
+    display: flex;
+    height: 60px;
+
+    .tab-item {
+      position: relative;
+      text-decoration: none;
+      padding: 0 20px;
+      line-height: 60px;
+      color: $color-black;
+      font-size: 18px;
+
+      &::after {
+        @extend %afterLink;
+      }
+
+      &--active {
+        font-weight: 700;
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &:hover::after {
+        @extend %afterLink;
+        width: 100%;
+      }
+    }
+  }
+}

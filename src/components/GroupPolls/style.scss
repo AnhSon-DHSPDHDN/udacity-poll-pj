@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+
+.group-poll-wrapper {
+  width: 100%;
+  border: 1px solid $color-black;
+}
+
+.group-poll {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.poll-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 10px;
+  align-items: center;
+  width: 300px;
+  border: 1px solid $color-black;
+
+  &__name {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__btn-show {
+    padding: 5px 40px;
+    box-sizing: border-box;
+    background-color: $color-white;
+    outline: none;
+    border: 1px solid green;
+    color: green;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $color-dark-green;
+      color: $color-dark-green;
+    }
+  }
+}

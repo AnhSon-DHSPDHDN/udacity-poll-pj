@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.detail-poll-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+  }
+
+  &__questions-container {
+    display: flex;
+    column-gap: 20px;
+  }
+
+  .question {
+    display: flex;
+    width: 400px;
+    border: 1px solid $color-black;
+    flex-direction: column;
+
+    &__name {
+      padding: 7px 20px;
+    }
+
+    &__btn-choose {
+      outline: none;
+      font-weight: bold;
+      background-color: green;
+      border: none;
+      padding: 10px 0;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+        background-color: rgb(88, 139, 11);
+      }
+
+      &:active {
+        background-color: rgb(49, 80, 3);
+      }
+    }
+  }
+}

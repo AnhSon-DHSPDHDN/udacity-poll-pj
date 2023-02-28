@@ -1,0 +1,51 @@
+@import './variables';
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-error {
+  color: red;
+  font-size: 12px;
+}
+
+@for $i from 1 through 20 {
+  // Margin
+  .mt-#{$i} {
+    margin-top: (0.25 * $i) + rem;
+  }
+  .mb-#{$i} {
+    margin-bottom: (0.25 * $i) + rem;
+  }
+  .ml-#{$i} {
+    margin-left: (0.25 * $i) + rem;
+  }
+  .mr-#{$i} {
+    margin-right: (0.25 * $i) + rem;
+  }
+  // Padding
+  .pt-#{$i} {
+    padding-top: (0.25 * $i) + rem;
+  }
+  .pb-#{$i} {
+    padding-bottom: (0.25 * $i) + rem;
+  }
+  .pl-#{$i} {
+    padding-left: (0.25 * $i) + rem;
+  }
+  .pr-#{$i} {
+    padding-right: (0.25 * $i) + rem;
+  }
+}

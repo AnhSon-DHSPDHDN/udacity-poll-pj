@@ -1,0 +1,11 @@
+.home-layout {
+  display: flex;
+  justify-content: center;
+
+  &__main-page {
+    margin-top: 60px;
+    padding-top: 30px;
+    width: 100%;
+    max-width: 1200px;
+  }
+}
