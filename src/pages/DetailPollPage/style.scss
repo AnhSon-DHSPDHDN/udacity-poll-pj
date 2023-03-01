@@ -42,6 +42,11 @@
       &:active {
         background-color: rgb(49, 80, 3);
       }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: rgb(88, 139, 11);
+      }
     }
   }
 }

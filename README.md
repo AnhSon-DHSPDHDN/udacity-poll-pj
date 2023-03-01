@@ -5,8 +5,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Account
 
-All account have password is: 123456
+All account have password is: 123456.\
 Account login is ID and PASSWORD in src/apis/data.js
+
+## Environment
+
+NodeJS version 16.16.0
 
 ## Available Scripts
 
