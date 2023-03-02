@@ -3,6 +3,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Step 1: git clone https://github.com/AnhSon-DHSPDHDN/udacity-poll-pj.git .\
+Step 2: cd in this project .\
+Step 3: npm install .\
+Step 4: npm start .\
+
 ## Account
 
 All account have password is: 123456.\
