@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail Poll Page Leave Detail Poll Page 1`] = `undefined`;
+
+exports[`Detail Poll Page Render Detail Poll Page 1`] = `undefined`;
+
+exports[`Detail Poll Page Render Poll by sarahedo 1`] = `undefined`;
+
+exports[`Detail Poll Page Render logout btn 1`] = `undefined`;
+
+exports[`Detail Poll Page Render option One 1`] = `undefined`;
+
+exports[`Detail Poll Page Render option Two 1`] = `undefined`;

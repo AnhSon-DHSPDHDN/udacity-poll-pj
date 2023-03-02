@@ -10,6 +10,7 @@ const initialState = {
   isLoading: false,
   userInfo: {},
   loginError: null,
+  callbackUrl: Routes.HOME_PAGE,
 };
 
 export const actLogin = createAsyncThunk(
@@ -52,7 +53,11 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.userInfo = {};
       state.loginError = null;
+      state.callbackUrl = Routes.HOME_PAGE;
       globalNavigate(Routes.LOGIN_PAGE);
+    },
+    actUpdateCallbackUrl: (state, action) => {
+      state.callbackUrl = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -78,5 +83,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { actLogout } = authSlice.actions;
+export const { actLogout, actUpdateCallbackUrl } = authSlice.actions;
 export default authSlice.reducer;

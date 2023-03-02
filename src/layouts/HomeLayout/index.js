@@ -1,15 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader";
 import Routes from "../../constants/routes";
+import { actUpdateCallbackUrl } from "../../redux/features/auth/authSlice";
 
 import "./style.scss";
 
 const HomeLayout = () => {
   const { isAuth } = useSelector((state) => state.auth);
+  const location = useLocation();
+  const dispatch = useDispatch();
 
-  if (!isAuth) return <Navigate to={Routes.LOGIN_PAGE} replace />;
+  if (!isAuth) {
+    dispatch(actUpdateCallbackUrl(location.pathname));
+    return <Navigate to={Routes.LOGIN_PAGE} />;
+  }
 
   return (
     <div className="home-layout">

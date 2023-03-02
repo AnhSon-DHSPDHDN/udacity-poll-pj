@@ -1,7 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { actFetchAnswerQuestion } from "../../redux/features/questions/questionsSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import Routes from "../../constants/routes";
+import {
+  actFetchAnswerQuestion,
+  actFetchQuestions,
+} from "../../redux/features/questions/questionsSlice";
 import "./style.scss";
 
 const Question = ({ option, name, question, currentUser, isDisableAnswer }) => {
@@ -33,10 +37,24 @@ const Question = ({ option, name, question, currentUser, isDisableAnswer }) => {
 
 const DetailPollPage = () => {
   const { question_id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { questions, isLoading, isLoadingAnswer } = useSelector(
     (state) => state.questions
   );
   const { users, userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(actFetchQuestions());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(questions).length && !questions[question_id]) {
+      navigate(Routes.NOT_FOUND);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions, question_id]);
 
   const currentQuestion = useMemo(
     () => questions[question_id] || {},
@@ -44,8 +62,8 @@ const DetailPollPage = () => {
   );
 
   const isHasAnswer = [
-    ...currentQuestion?.optionOne?.votes,
-    ...currentQuestion?.optionTwo?.votes,
+    ...(currentQuestion?.optionOne?.votes || []),
+    ...(currentQuestion?.optionTwo?.votes || []),
   ].includes(userInfo.id);
 
   const isDisableAnswer = isLoadingAnswer || isLoading || isHasAnswer;

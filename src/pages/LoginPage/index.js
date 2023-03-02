@@ -6,7 +6,6 @@ import "./style.scss";
 import { loginSchema } from "../../validations/loginSchema";
 import { actLogin } from "../../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import Routes from "../../constants/routes";
 
 const initialFormValue = {
   username: "",
@@ -16,7 +15,9 @@ const initialFormValue = {
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth, isLoading, loginError } = useSelector((state) => state.auth);
+  const { isAuth, isLoading, loginError, callbackUrl } = useSelector(
+    (state) => state.auth
+  );
   const methods = useForm({
     defaultValues: initialFormValue,
     resolver: yupResolver(loginSchema),
@@ -33,7 +34,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuth) {
-      navigate(Routes.HOME_PAGE);
+      navigate(callbackUrl);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth]);
