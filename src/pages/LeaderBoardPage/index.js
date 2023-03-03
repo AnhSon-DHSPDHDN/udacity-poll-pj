@@ -10,13 +10,12 @@ const LeaderBoardPage = () => {
   const computedDataTable = useMemo(() => {
     const usersLeaderBoard = Object.values(users);
     usersLeaderBoard.sort((prevUser, crrUser) => {
-      const prevUserAnswer = Object.keys(prevUser.answers).length;
-      const crrUserAnswer = Object.keys(crrUser.answers).length;
-      if (crrUserAnswer - prevUserAnswer === 0) {
-        return crrUser.questions.length - prevUser.questions.length;
-      }
+      const prevUserScore =
+        Object.keys(prevUser.answers).length + prevUser.questions.length;
+      const crrUserScore =
+        Object.keys(crrUser.answers).length + crrUser.questions.length;
 
-      return crrUserAnswer - prevUserAnswer;
+      return crrUserScore - prevUserScore;
     });
 
     return usersLeaderBoard;

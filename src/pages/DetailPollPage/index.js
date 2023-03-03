@@ -7,9 +7,18 @@ import {
   actFetchQuestions,
 } from "../../redux/features/questions/questionsSlice";
 import "./style.scss";
+import clsx from "clsx";
 
-const Question = ({ option, name, question, currentUser, isDisableAnswer }) => {
+const Question = ({
+  option,
+  name,
+  question,
+  currentUser,
+  isDisableAnswer,
+  isNotAnswer,
+}) => {
   const dispatch = useDispatch();
+  const isHasChoose = !!option?.votes?.includes(currentUser.id);
 
   const handleAnswerQuestion = (questionName) => {
     const payload = {
@@ -22,7 +31,12 @@ const Question = ({ option, name, question, currentUser, isDisableAnswer }) => {
   };
 
   return (
-    <div className="question">
+    <div
+      className={clsx(
+        "question",
+        isNotAnswer ? "" : isHasChoose ? "" : "question--not-choose"
+      )}
+    >
       <span className="question__name">{option?.text}</span>
       <button
         className="question__btn-choose"
@@ -98,6 +112,7 @@ const DetailPollPage = () => {
             name={"optionOne"}
             currentUser={userInfo}
             isDisableAnswer={isDisableAnswer}
+            isNotAnswer={!isHasAnswer}
           />
           {isHasAnswer && (
             <>
@@ -119,6 +134,7 @@ const DetailPollPage = () => {
             name={"optionTwo"}
             currentUser={userInfo}
             isDisableAnswer={isDisableAnswer}
+            isNotAnswer={!isHasAnswer}
           />
           {isHasAnswer && (
             <>
